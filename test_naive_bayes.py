@@ -53,7 +53,7 @@ def accuracy(classifier, test, verbose=sys.stderr):
     correct = [classifier.classify(x) == x.label for x in test]
     if verbose:
         # modified to show 2 decimal places
-        acc = 100 * sum(correct) / len(correct)
+        acc = 100.0 * sum(correct) / len(correct)
         split_acc = str(acc).split('.')
         s = "accuracy: " + "{}.{:.2}%\n".format(split_acc[0], split_acc[1])
         print >> verbose, s,
@@ -70,7 +70,7 @@ def recall(classifier, test, verbose=sys.stderr):
             r[label] = 0.0
     if verbose:
         for label in r:
-            split_r = str(100 * r[label]).split('.')
+            split_r = str(100.0 * r[label]).split('.')
             s = str(label) + " recall: "
             s += "{}.{:.2}%\n".format(split_r[0], split_r[1])
             print >> verbose, s,
@@ -87,7 +87,7 @@ def precision(classifier, test, verbose=sys.stderr):
             p[label] = 0.0
     if verbose:
         for label in p:
-            split_p = str(100 * p[label]).split('.')
+            split_p = str(100.0 * p[label]).split('.')
             s = str(label) + " precision: "
             s += "{}.{:.2}%\n".format(split_p[0], split_p[1])
             print >> verbose, s,
@@ -104,7 +104,7 @@ def f1(classifier, test, verbose=sys.stderr):
             f[label] = 0.0
     if verbose:
         for label in f:
-            split_f = str(100 * f[label]).split('.')
+            split_f = str(100.0 * f[label]).split('.')
             s = str(label) + " f1: "
             s += "{}.{:.2}%\n".format(split_f[0], split_f[1])
             print >> verbose, s,
@@ -113,7 +113,7 @@ def f1(classifier, test, verbose=sys.stderr):
 def avg_f1(classifier, test, verbose=sys.stderr):
     f = f1(classifier, test, verbose=verbose)
     if verbose:
-        split_f = str(100 * sum(f.values()) / len(f)).split('.')
+        split_f = str(100.0 * sum(f.values()) / len(f)).split('.')
         s = "avg f1: " + "{}.{:.2}%\n".format(split_f[0], split_f[1])
         print >> verbose, s,
     return sum(f.values()) / len(f)
